@@ -34,29 +34,50 @@
     </footer>
 
     <script src="./scripts/jquery-3.5.1.min.js"></script>
-    
+
     <script>
-        //global variables
-        var $input = $('#search')
-        var $submit = $('#btn-primary')
-        var APIKEY = "RHgqhso0eRSPwx9pB5MgppVCRGhcF5A6";
-        var $image = $('.image')
+        $(document).ready(function () {
+            //global variables
+            var $input = $('#search')
+            var $submit = $('#btn-primary')
+            var APIKEY = "RHgqhso0eRSPwx9pB5MgppVCRGhcF5A6";
+            var $image = $('.image')
 
-        //get input value when the user presses submit
-        $submit.on('click', function(event){
-        //prevent page from refreshing keeping search
-        event.preventDefault();
-        //empties div container when requesting another search (images)
-        $image.empty();
-        var inputVal = $input.val();
-         //call getgiphy function and pass inputVal so we can call it in later function
-        getGiphy(inputVal);
-        //clears search bar after receiving results
-        $input.val(' ');
-      });
+            //get input value when the user presses submit
+            $submit.on('click', function (event) {
+                //prevent page from refreshing keeping search
+                event.preventDefault();
+                //empties div container when requesting another search (images)
+                $image.empty();
+                var inputVal = $input.val();
+                //call getgiphy function and pass inputVal so we can call it in later function
+                getGiphy(inputVal);
+                //clears search bar after receiving results
+                $input.val(' ');
+            });
 
-        //make git request to the giphy api with the input value
+            //make a git request to the giphy api with the input value
+            function getGiphy(inputVal) {
+                $.get('https://api.giphy.com/v1/gifs/search?q=' + inputVal + '&api_key=' + APIKEY + '&limit=5')
+                    //use a promise to get a response and call data back
+                    .done(function (data) {
+                        //create for loop to grab giph photos
+                        for (var i = 0; i < 5; i++) {
+                            //use console to grab url for giphy
+                            var gifImg = data.data[i].images.downsized.url;
+                            createBox(gifImg);
+                        }
+                    });
+            };
 
+            //create a function to append images
+            function createBox(gifImg) {
+                var $newImg = $('<img>')
+                $newImg.attr('src', gifImg);
+                $newImg.addClass('image');
+                $image.append($newImg);
+            }
+        });//end of code
     </script>
 
 </body>
