@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -36,8 +37,23 @@
     
     <script>
         //global variables
+        var $input = $('#search')
+        var $submit = $('#btn-primary')
+        var APIKEY = "RHgqhso0eRSPwx9pB5MgppVCRGhcF5A6";
+        var $image = $('.image')
 
         //get input value when the user presses submit
+        $submit.on('click', function(event){
+        //prevent page from refreshing keeping search
+        event.preventDefault();
+        //empties div container when requesting another search (images)
+        $image.empty();
+        var inputVal = $input.val();
+         //call getgiphy function and pass inputVal so we can call it in later function
+        getGiphy(inputVal);
+        //clears search bar after receiving results
+        $input.val(' ');
+      });
 
         //make git request to the giphy api with the input value
 
