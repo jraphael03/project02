@@ -495,30 +495,39 @@ textarea {
 
 .media-primary .image {
   display: flex;
-  height: 150px;
-  width: 150px;
+  height: 300px;
+  width: 300px;
 }
 
 @media only screen and (max-width: 47.9375em) {
   .media-primary .image {
     flex-direction: column;
     align-items: center;
+    height: 300px;
+    width: 300px;
   }
 }
 
-.header-primary {
+.header-primary nav {
   display: flex;
-}
-
-.header-primary header-text {
-  font-family: roboto;
+  justify-content: space-evenly;
+  height: 50px;
 }
 
 @media only screen and (max-width: 47.9375em) {
-  .header-primary {
+  .header-primary nav {
     text-align: center;
     display: inline-block;
   }
+}
+
+.header-primary .header-text {
+  flex-grow: 1;
+  height: 50px;
+}
+
+.header-primary #search {
+  flex-grow: 2;
 }
 
 .header-primary ul {
@@ -529,5 +538,9 @@ textarea {
   .header-primary ul {
     display: none;
   }
+}
+
+.header-primary li {
+  display: inline-flex;
 }
 /*# sourceMappingURL=style.css.map */

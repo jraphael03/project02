@@ -1,16 +1,26 @@
 .header-primary { 
-    display: flex;
+    nav{
+        display: flex;
+        justify-content: space-evenly;
+        height: 50px;
 
-    header-text{
-        font-family: roboto;
+        @include extra-small-only{
+            text-align: center;
+            display: inline-block;
+        }
     }
 
-    @include extra-small-only{
-        text-align: center;
-        display: inline-block;
+
+    .header-text{
+        flex-grow: 1;
+        height: 50px;
     }
+
+
     
-
+    #search{
+        flex-grow: 2;
+    }
 
    ul{
        list-style: none;
@@ -18,5 +28,9 @@
        @include extra-small-only{
                display: none;
         }
+    }
+
+    li{
+        display: inline-flex;
     }
 }
