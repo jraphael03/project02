@@ -1,0 +1,19 @@
+.header-primary { 
+    display: flex;
+
+
+    @include extra-small-only{
+        text-align: center;
+        display: inline-block;
+    }
+    
+
+
+   ul{
+       list-style: none;
+
+       @include extra-small-only{
+               display: none;
+        }
+    }
+}

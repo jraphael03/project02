@@ -1,0 +1,16 @@
+.media-primary{
+
+    .image{
+        display: flex;
+
+        height: 150px;
+        width: 150px;
+        
+        
+        
+        @include extra-small-only{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
