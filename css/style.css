@@ -510,6 +510,10 @@ textarea {
   display: flex;
 }
 
+.header-primary header-text {
+  font-family: roboto;
+}
+
 @media only screen and (max-width: 47.9375em) {
   .header-primary {
     text-align: center;

@@ -1,6 +1,9 @@
 .header-primary { 
     display: flex;
 
+    header-text{
+        font-family: roboto;
+    }
 
     @include extra-small-only{
         text-align: center;
