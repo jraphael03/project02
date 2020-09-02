@@ -5,35 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <!--  <link rel="stylesheet" href="css/style.css">   -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-        .header-text{
+
+        .header-text {
             font-family: roboto;
         }
-        
-        </style>
+    </style>
 </head>
-
 <body>
-    <header class="header-primary">
+    <header class="jumbotron">
         <div class="container">
             <nav>
-                <h2 class="header-text"><strong>GIPHY</strong> Search API</h2>
-                <input id="search" type="search" placeholder="Search">
-                <button id="btn-primary" class="btn-primary">Search</button>
-                <ul>
-                    <li>About</li>
-                    <li>Contact</li>
-                </ul>
+                <div class="row">
+                    <h2 class="col-12 header-text d-flex justify-content-center"><strong>GIPHY</strong> Search API
+                    </h2>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <input id="search" type="search" class="col-3"
+                        placeholder="Find your GIPHY">
+                    <button id="btn-primary" class="btn-primary">Search</button>
+                </div>
             </nav>
         </div>
     </header>
-
-    <section class="media-primary">
-        <div class="image"></div>
-    </section>
+    <div class="container horizontal-scrollable">
+        <div class="row">
+            <section class="media-primary">
+                <div class="image col-xs-4"></div>
+            </section>
+        </div>
+    </div>
 
     <footer class="footer-primary">
 
@@ -64,11 +70,11 @@
 
             //make a git request to the giphy api with the input value
             function getGiphy(inputVal) {
-                $.get('https://api.giphy.com/v1/gifs/search?q=' + inputVal + '&api_key=' + APIKEY + '&limit=5')
+                $.get('https://api.giphy.com/v1/gifs/search?q=' + inputVal + '&api_key=' + APIKEY + '&limit=10')
                     //use a promise to get a response and call data back
                     .done(function (data) {
                         //create for loop to grab giph photos
-                        for (var i = 0; i < 5; i++) {
+                        for (var i = 0; i < 10; i++) {
                             //use console to grab url for giphy
                             var gifImg = data.data[i].images.downsized.url;
                             createBox(gifImg);
@@ -84,6 +90,17 @@
                 $image.append($newImg);
             }
         });//end of code
+
+        /*  Try to make this into jquery enter key press
+        var input = document.getElementById("myInput");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("myBtn").click();
+        }
+    });
+    */
+
     </script>
 
 </body>
